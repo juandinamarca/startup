@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>My Sample Project</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css">
+        <!-- data-main attribute tells require.js to load
+             scripts/main.js after require.js loads. -->
+        
+        <script src="js/jquery-2.1.1.min.js"></script>
+        <script src="libs/underscore-min.js"></script> 
+        <script src="libs/backbone-min.js"></script> 
+        <script type="text/javascript" src="js/backbone.localstorage.js"></script>
+        <script src="js/backbone/models/movie.js"></script> 
+        <script src="js/backbone/collections/movies.js"></script> 
+        <script src="js/backbone/views/movieview.js"></script> 
+        <script src="js/main.js"></script> 
+    </head>
+    <body id="app">
+        <h1>My Favourite Films</h1>
+
+
+
+        <div id='divmovies' class='esconder'>
+        <script type="text/template" id='some-template'>
+                  
+            
+        <hr>
+        <div>
+          <%for(i=0; i<devuelve.length;i++) { %>
+          <h3><%= devuelve[i].name %> (<%= devuelve[i].year %>)</h3>
+          <p><%= devuelve[i].duration %>  </p>
+          <p>Director: <%= devuelve[i].director %></p>
+          <p>Description: <%= devuelve[i].description %></p>
+          <input type="button" id="edit" value=" Editar " >
+          <input type="button" id="button3" value=" Eliminar " >
+          <hr>
+          <%}%>
+        </div>
+
+        </script>
+        </div> 
+
+
+        <h2>Add or Edit a new film!</h2>
+
+
+        <div id='panel'></div>
+
+    
+            <label>Title</label>
+            <input id="title" type="text" /> <br>
+            <label>Year</label>
+            <input id="year" type="text" /> <br>
+            <label>Duration (min)</label>
+            <input id="duration" type="text" /> <br>
+            <label>Director</label>
+            <input id="director" type="text" /> <br>
+            <label>Description</label> <br>
+            <textarea id="description"  rows="5" cols="50"></textarea/> <br>
+            
+
+
+            
+        
+
+        <input type="button" id="add" value=" Agregar " class="ejecuta">
+        <input type="button" id="save" value=" Guardar " ><br><br>
+        <input type="button" id="delete" value=" Borrar Pelicula " >
+        <input id="textdelete" type="text" /> 
+        
+
+
+
+    
+    </body>
+</html>
