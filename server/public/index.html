@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Final Project</title>
+        <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+        <!-- data-main attribute tells require.js to load
+             scripts/main.js after require.js loads. -->
+        
+        <script src="js/vendor/jquery-2.1.1.min.js"></script>
+        <script src="js/vendor/underscore-min.js"></script> 
+        <script src="js/vendor/backbone-min.js"></script> 
+        <script type="text/javascript" src="js/vendor/backbone.localstorage.js"></script>
+        
+        <script src="js/backbone/models/tweet.js"></script>
+        <script src="js/backbone/models/trend.js"></script>  
+        <script src="js/backbone/collections/listTweets.js"></script>
+        <script src="js/backbone/collections/listTrends.js"></script>
+        <script src="js/backbone/collections/listTweetsTrends.js"></script>
+        <script src="js/backbone/collections/listBlockedUsers.js"></script>
+        <script src="js/backbone/views/timeline.js"></script>
+        <script src="js/backbone/views/timelinetrend.js"></script>
+        <script src="js/backbone/views/trendsview.js"></script>  
+        <script src="js/backbone/views/tweetview.js"></script>   
+        <script src="js/backbone/views/Blockedusersview.js"></script>
+        <script src="js/backbone/routes/router.js"></script>
+        <script type="text/javascript" src="js/main.js"></script>
+         
+    </head>
+    <body>
+        
+
+        <div>
+        <button id='Home'>Home</button> 
+        <button id='Blockedusers'>Blocked Users</button> 
+        <button id='Trends'>Trends</button>
+        <button onclick="getLocation()" id='Location'>Location</button>
+        
+        <br>
+        </div>
+
+        <p id="demo"></p>
+        
+        <table id="tableTweets5">
+        <script type="text/template" id='sblockedusers'>
+            <div>   <%=  name   %></div>
+        <hr>
+        </script>
+        </table>  
+
+
+
+
+        <table id="tableTweets2">
+        <script type="text/template" id='strends'>
+     
+        <%for(i=0; i<trends.length;i++) { %>
+            <div data-url= <%=trends[i].query%> > <%= trends[i].name %>  </div>
+            <hr>  
+         <%}%>
+                
+
+        </script>
+        </table>  
+
+        <table id="tableTweets1">
+        <script type="text/template" id='stweet'>
+            <div data-id=<%=id%>>  
+                <img class='image' src="<%=user.profile_image_url%>">
+                <p class='name'> <%= user.name %> </p>
+                <p class='namet'> @<%= user.screen_name %> </p> 
+                <p class='tweet'> <%= text %>  </p> 
+                <p> <%= created_at %>  </p> 
+                <hr>
+                <p class='ret'><%=retweet_count%>  RETWEETS <%=favorite_count%> FAVORITES</p>
+            </div>
+        </script>
+        </table> 
+
+
+
+        
+        <table id="tableTweets">
+        <script type="text/template" id='stimeline'>
+            <div data-id=<%=id%>> 
+                <img class='image' src="<%=user.profile_image_url%>">
+                <p class='name'> <%= user.name %>  @<%= user.screen_name %> </p>  
+                <p class='text'> <%= text %></p> 
+            </div>
+            <hr>
+        </script>
+        </table>
+        
+               
+
+        <table id="tableTweets4">
+        <script type="text/template" id='strendsline'>
+            <div data-id= <%=id%>>
+                <img class='image' src="<%=user.profile_image_url%>">
+                <p class='name'>  <%= user.name %>  @<%= user.screen_name %> </p>
+                <p class='text'> <%= text %></p> 
+            </div>
+            <hr>
+        </script>
+        </table>
+
+  
+        <script>
+            var x = document.getElementById("demo");
+
+            function getLocation() {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(showPosition);
+                } else { 
+                    x.innerHTML = "Geolocation is not supported by this browser.";
+                }
+            }
+
+            function showPosition(position) {
+                x.innerHTML = "Latitude: " + position.coords.latitude + 
+                 "<br>Longitude: " + position.coords.longitude;  
+            }
+        </script>
+
+
+    </body>
+</html>
+
+<!--
+<div data-id=<%=id%>> <%= user.name %>  </div>
+-->
